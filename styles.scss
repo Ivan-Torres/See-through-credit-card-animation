@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300&display=swap'); /* google font api so i can get the font i wou.d ike for the credit card*/
+html {
+  height: 100%;
+}
+*{
+    margin:0;
+    padding:0;
+  }
+
+  body{ 
+   background-image: linear-gradient(to bottom right, #cfd9df, #708090); 
+   height: 100%;
+   margin: 0;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-size: cover;
+  display: grid;
+  font-family: 'Inconsolata', monospace; 
+  min-height: 100vh;
+  place-items: center;
+  }
+
+  .holder {   /*this is wehre i will be creating the two b alls that orbit the cedit card*/
+    position: relative;
+    
+    &:before,
+    &:after {
+      animation: orbit 5s linear infinite;
+      border-radius: 100%;
+      box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+      content: ""; /* musn't forget the content tag*/
+      height: 150px;
+      position: absolute;
+      width: 150px;
+    }
+    &:before {
+      background:white;
+      
+    }
+    &:after {
+      animation-delay: -2.0s;
+      background: black;
+      
+      right: 0;
+      top: 0;
+      z-index: -1; /* i wannt this one one behind the white ball incase they overlap*/
+    }
+  }
+
+  .card{
+    border: 1px solid #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+    font-size: 2rem;
+    align-items: center;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    width: 370px;
+    
+    &:before{
+      background-color: rgba(161, 199, 209, 0.3); /*rgba becuase i can define the opacity*/
+      backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+      -webkit-backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 100%;
+      border-radius: 5%;
+    }
+
+  .card:before {         /* this psuedo element is in charge of creating the blur effect on the card  */
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px) saturate(100%) contrast(45%) brightness(130%);
+    filter: blur(1px);
+  -webkit-filter: blur(1px); /* this allows it to render on safari and google chrome */
+  overflow: hidden;
+     
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  .text {
+    color: #535558;
+    margin-left: 30px;
+    margin-top: 100px;
+    position: relative;
+    z-index: 2; /* this z index pushes the text forward so you can see at the top of the card i like think if the z index as forward aand backwards*/
+  }
+}
+@keyframes orbit {     /* obviously if we are using animations then we need key frames*/
+  from {
+    transform: rotate(0deg) translateX(200px) rotate(0deg); /* translate x helps define the radius of the circle and how far from the point my two circles will rotate on*/
+  }
+  to {
+    transform: rotate(360deg) translateX(2
+    00px) rotate(-360deg);
+  }
+}
+
